@@ -1,0 +1,79 @@
+\section{Lock-in Zurich}
+  A lock in amplifier, adds a AC signal to the initial one, and then, from the output from the system, filters out the components at the same frequency. This is a good way to remove noise. The device is controlled solely from the ZI Control Panel. Any reading from the lock is has already been processed.
+  
+  What happens is we mix in a signal with the input one
+  
+  \begin{equation}\label{key}
+  	V_0 \iright V_0+V_{L}e^{i\omega_{L}t}.
+  \end{equation}
+  
+  \noindent This signal with the added AC component is fed into the system. The current and voltage measured out the output will be of the form
+  
+  \begin{equation}\label{key}
+  	V_{\text{out}} = \sum_{n}V_n^{\text{out}}e^{i\omega_n t+\delta_n},
+  \end{equation}
+  
+  \noindent which is a mixture of signals from different noise frequencies. Somewhere the signal at the lock in frequency in encoded - the actual response of the system we want to measure. The lock in multiples $ V_{\text{out}} $ with the original signal and integrates over a set time period
+  
+  \begin{equation}\label{key}
+  	\begin{aligned}
+  	& \frac{1}{T}\sum_n \int_{0}^{T}V_{L}V^{\text{out}}_ne^{i\delta_n}e^{i(\omega_n - \omega_{L})t}dt
+  	\\& = \sum_n V_{L}V^{\text{out}}_ne^{i\delta_{n}}\int_{0}^{T}e^{i(\omega_n - \omega_{L})t}\frac{dt}{T}
+  	\\& = \sum_n V_{L}V^{\text{out}}_ne^{i\delta_{n}}\delta_{L,n}
+  	\\& = V_{L}V^{\text{out}}_Le^{i\delta_L},
+  	\end{aligned}
+  \end{equation}
+  
+  \noindent where we can remove $ V_L $ which is known, leaving
+  
+  \begin{equation}\label{key}
+  	V_{L}^{\text{out}}e^{i\delta_L} \equiv V_{\text{signal}}e^{i\delta},
+  \end{equation}
+  
+  \noindent the noise free signal from the system i.e. the amplitude and phase of the systems oscillations due to the changing driving current/voltage. All the oscillations at other frequencies have been averaged out.
+  
+  The lock will present this value as either the XY components, or R, $ \theta $ components.
+  
+  \subsection{Tuning parameters on control panel}
+   \begin{itemize}
+   	\item Signal inputs
+   	\begin{itemize}
+   		\item \texttt{Preamplifiers} {\ra None. \textbf{Be sure to select this in the options, otherwise incorrect demodulation will occur} e.g. choose \mi{DIR} not \mi{PRE} in options;}
+		\item \texttt{Scaling+units} {\ra Not needed;}
+		\item \texttt{Range/Sensitivity} \ra Its the peak to peak voltage input (from the system we are measuring) that will be boosted to 10V within the lock in. E.g if 3V is selected, it is boosted to 10V for the lock in calculations, but then normalised back to 3V. \red{I used 5mV for dV, and 10mV for dI in Jan 2017}. You want to make this value the biggest value of the signal in the system e.g. if signal is 100mV, put it at 200mV.
+		\item \texttt{AC or Diff} \ra what type of measurements we are making. Usually AC.
+   	\end{itemize}
+    \item Frequency
+    \begin{itemize}
+    	\item \texttt{Internal} \ra The internal frequency that is mixed in. \red{19.0101Hz}
+    	\item \texttt{Demodulators} \ra There are 6 blocks in the lock in that perform the demodulation (extraction of signal at the lock in frequency). Tick the ones that are going to be used for each input. Select the time for this. {33ms to 238ms.} \red{Ensure that this time is MUCH MUCH bigger than the time of your measurement on LabView. If we are stepping the magnetic field per say every 1ns, then the lock in will be averaging for far too long!}
+    \end{itemize}
+    \item Filters
+    \begin{itemize}
+    	\item 24dB/Oct filters
+    	\item \texttt{Time constant for averaging} is discussed above.
+    \end{itemize}
+    \item Mixing component - there are two boxes. With each box you control one add/out module. For each module you apply a DC signal (feed into \texttt{add}), mix in the AC component and give it out at \texttt{out}.
+    \begin{itemize}
+    	\item \texttt{Set range} \ra 1mV standard
+    	\item \texttt{Peak to peak AC} \ra the peak to peak voltage of the AC signal. Make such its smaller than the original signal.
+    	\item \texttt{Add AC component} \ra ON
+    	\item \texttt{Turn output on} \ra ON
+    \end{itemize}
+    \item Auxillary OI - select which demodulator results you output to which output gates. Select X, Y, R or $\Theta$.
+   \end{itemize}
+
+   \subsection{Cable connections}
+    \begin{itemize}
+    	\item \cmd{Connect the DC cable with the bias signal (if any) to one of the \mi{Add} inputs}. This is the initial signal, to which the AC component will be added;
+    	\item \cmd{Draw a cable from \mi{Out} port of the Lock-In \textbf{to the system}};
+    	\item \cmd{Draw a readout cable\textbf{from the system} to the \mi{+/-In} port of the lock in}. This wire carries the signal that the lock in is going to demodulate. Take care - since no pre amplifier is used usually, do not connect to any pre-amplifier modules;
+    	\item \cmd{Read signal filtered by the lock in from one of its \mi{Aux} cables.}
+    \end{itemize}
+ 
+  \subsection{Using oscilloscope to measure DC}
+   Feed in the current and voltage lines to the oscilloscope \ra choose XY mode in order to plot one against the other. If the contact is open, then current, $ I $, and voltage, $ V $, will be creating a lissajoule figure, due to them being shifted in phase relative to one another.
+   
+  
+ \newpage
+ 

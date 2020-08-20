@@ -1,0 +1,80 @@
+% -*- TeX-master: "../fat_manual.tex" -*-
+
+\section{Chalmers DWL 200 Optical lithography\label{sec:DWL200}}
+The pattern is exposed with  a laser using a GDS file. It must  be booked.  {LHS computer used
+  to control lithographer}, RHS to prepare file.
+  
+\subsection{Loading}
+
+\begin{enumerate}
+\item \cmd{Switch black switch} to open door;
+\item \cmd{Turn on light} under the top of the device;
+\item \cmd{Place sample over vacuum hole using \mi{tool 262}}. The orientation of the device
+  \begin{itemize}
+  \item X-axis away from user;
+  \item Y-axis from right to left;
+  \end{itemize}
+\item \cmd{Switch on vacuum with blue knob \ra Turn off the light \ra close the door};
+\end{enumerate}
+ 
+\subsection{Prepare file on RHS computer}
+\begin{enumerate}
+\item \cmd{Log in} \ra \cmd{\mi{xconvert}} \ra \cmd{\mi{new job}} \ra \cmd{\mi{OK}};
+\item In top menu \ra \cmd{\mi{add}} \ra \cmd{\mi{GDS II} \ra select file \ra select layer \ra
+    \mi{create default}};
+\item \cmd{Check parameters}\ra use viewer to  see the pattern \ra \cmd{\mi{complete task} \ra
+    \mi{save} \ra \mi{complete exposure job}}.
+\end{enumerate}
+ 
+ 
+\subsection{Focusing (set laser sample distance)}
+\begin{enumerate}
+\item  LHS \ra  \mi{Hi lithographer}  shortcut  on desktop  \ra  User =  \mi{Antonov}, Pass  =
+  \mi{19oct2014};
+\item \cmd{Control system} \ra \cmd{\mi{center}} (to  move to center) \ra \cmd{check laser has
+    moved} \ra \cmd{enable \mi{autofocus}};
+\item \cmd{\mi{Focus  mode}:}\textbf{for large  chips} \cmd{use pneumatic  focus}, \textbf{for
+    Small+non reflective chips} \cmd{use optical focus};
+\item  \red{For  thick   chips  may  need  to  change  z-limit   \ra  \cmd{\mi{zMax}\ra  reset
+      \mi{zLimit}}};
+\item \cmd{Press \mi{Autofocus}} (down arrow) to focus;
+\item \cmd{Press \mi{live} + {adjust light} to get a visual picture on the central monitor};
+\item \red{Typical focusing values: \mi{Piezzo} =  36256, \mi{Autofocus} = enable, \mi{zMax} =
+    2000}
+\end{enumerate}
+
+ \subsection{Global alignment}
+ Need to align the wafer to remove rotation and make markers horizontal.
+ \begin{itemize}
+ \item \cmd{Fing \mi{global alignment tab}};
+ \item \cmd{Acquire P1 \ra chose first point by clicking on live image} in camera screen;
+ \item \cmd{Move  to new point  \ra acquire P2\ra  \mi{Save and go  to 0-0}}\ra sample  is now
+   aligned;
+ \item \red{Iterate  if required}.  Can  use \mi{micro} to  set accurately and  \mi{Freeze} to
+   avoid fluctuating focus \red{but remember to turn off!}
+ \end{itemize}
+
+ \subsection{Centering}
+ Perform  centering and  define markers.   \red{Use move  to position  for direct  movement to
+   specific points}.
+  
+ \begin{enumerate}
+ \item  \cmd{\mi{Tools}}   \ra  \cmd{\mi{center   square}}  ($   \oplus  $)   to  find   center  of
+   wafer/chip. \cmd{Draw a square with the marker in the centre and \red{click scroller button
+       wheel }\ra enter coordinates of point e.g. 2500 5000} and move around chip to make sure
+   others move into placed;
+ \item \red{If  this fail, manually  define a  coordinate for centering  - click on  center of
+     required shape.}\ra\cmd{\mi{set coordinates}}
+ \end{enumerate}
+
+ \subsection{Expose}
+ \begin{enumerate}
+ \item \cmd{\mi{Template}\ra \mi{exposure job}\ra clone the job that is there};
+ \item \cmd{\mi{Designs}\ra select your design and drag it to the array};
+ \item \cmd{Set parameters in \mi{settings/processing}};
+ \item \cmd{\mi{Execute}}.
+ \end{enumerate}
+
+ File \ra \mi{logout} out of program on LHS computre and logout of RHS computer.
+ \newpage
+

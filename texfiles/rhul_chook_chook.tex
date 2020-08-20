@@ -1,0 +1,126 @@
+% -*- TeX-master: "../fat_manual.tex" -*-
+\section{RHUL The chook-chook}
+\iframe{Valve 2 -  its the equlibrator for V1 -  you need the same pressure on  either side of
+  V1, and  you use  V2 to do  this.  Then, the  can open  V1.}  \iframe{The cooling  system is
+  composed of two parts
+  \begin{itemize}
+  \item The pulse tube that fires in helium and expands it - it uses the big compressor in the
+    shed
+  \item The circulating cycle of He3 that is pumped out of He4. This is the big contour on the
+    right of the big  screen. P3 monitors the pressure before  the capillary constriction that
+    this mixture is funneled through.
+  \end{itemize}
+}
+
+\subsection{Pumping}
+System needs to be pumped to avoid formation of ice when it is cooled.
+\begin{enumerate}
+\item Can load the two blueforce programs on the desktop;
+\item \cmd{First stop venting by closing valves 14, 16, 19};
+\item \cmd{Close the cases, with the stitch facing the far wall of the lab};
+\item \cmd{Check the pressure is > 40mBar on the cylinder in the corner.}
+\item \cmd{Refill the trap with nitrogen so its full}. The trap will absorb gases that are not
+  Helium - they liquify? Eventually we need to replenish it;
+\item \cmd{Turn on the \mi{Scroll Pump 2} \ra V21, V16, V14} for rough pumping. \red{\cmd{Wait
+      until \mi{P6} reads 1mbar}}.
+\item \textbf{Start pumping the  trap} \cmd{\ra \red{close V14, V16} \ra  open {V17} and {V7}}
+  (\mi{V21} will still be open) and wait 15-30 minutes.
+  	
+  When we circulate the helium in the cycle,  we pass it through the Nitrogen trap (the tank).
+  Nitrogen, and oxygen will  be condensed in this trap, so only  volatile things like hygdroen
+  and  out helium  will  pass  through. This  means  that at  the  capillaries  we don't  have
+  oxygen/nitrogen plugs forming.
+  	
+  At room  temperature we must  pump the trap  to remove the gases  that we adsorbed  onto the
+  carbon mesh inside the trap.
+  	
+  \red{Position the trap in the the can! DO NOT TAKE OUT EVEN WHEN TOPPING UP!}
+  	
+\item \cmd{\red{Close {V17}  and {V7}. Pump the can  again by opening V16 \ra  V14. Wait until
+      \mi{P6} = 1mbar}};
+\item \textbf{Activate the turbo pump} \red{Close V14,  V16, V21} \ra \cmd{Open {V23} \ra turn
+    on \mi{Turbo2} \ra open {V22}, {V16, {V14}}}
+\item \cmd{Go outside and press start/stop on the left-most bottom box \ra Open the dump valve
+    by turning the black knob (which you cannot see) clockwise};
+\item \cmd{in the lab turn \mi{P1} on via the \mi{MaxiGauge} board}.
+\item \cmd{dip the trap into the nitrogen tank}.
+\item  \cmd{After  getting  $  3\times   10^{-3}\,$mBar  \ra  \mi{programming}  \ra  \mi{load}  \ra
+    \mi{installation   package$   \backslash   $   control   scripts   $   \backslash   $   with   extra   turbo
+      $ \backslash $ \newline LD\_auto\_cooldown\_wlN2\_extra\_turbo\_V1\_21\_V23\_open} \ra run}
+\item  \textbf{Good parameters  are 17\ideg  input water,  33\ideg output  water, 35\ideg  oil
+    colour.}\red{If required, go to pumps in back of room, and select constant pressure.}
+\item \red{In the morning the can should  have been pumped already (V14-16-21 closed). We need
+    to close  the turbo and  scroll pump \ra  \cmd{Go outside and  switch turbo off  \ra close
+      turbo on computer panel \ra close backing V23 \ra close \mi{scroll pump}}}
+\end{enumerate}
+
+\subsection{Mixing chamber circulation}
+\label{sec:mixing-chamb-circ}
+
+So, the first  part of the cooling process is  done with the pulse tube, cooling  to 5K, after
+which  the He3  is pumped  through He4  in the  mixing chamber.   \red{This is  driven on  the
+  right-hand-side of the panel, and it's the second turbo that causes this cirulation.}
+
+In order  for there to be  enough He3 circulation,  \red{\textbf{we actually need to  heat the
+    still stage so that the mixing chamber cools quicker.}}
+
+\begin{enumerate}
+\item Thus, once still temperature (Ch5) reaches  600\,mK (and flow rate lowers to 30\,mmol/s)
+  \ira \cmd{set ``Heat Analog2/Still'' to 10\,mW};
+\item \red{\textbf{Make sure flow rate is 60\,mmol/s}};
+\item \red{\textbf{Make sure still temperature is approximately 850\,mK}}.
+\end{enumerate}
+
+\noindent This will ensure that the mixing chamber  gets enough He3 circulation to cool to the
+base temperature of 13\,mK.
+
+\subsection{Shutting down}
+\begin{enumerate}
+\item \cmd{\mi{Maxigauge} \ra \mi{sensor P1} \ra \mi{off}} to shut down sensors during warmup;
+\item \cmd{In the program load \mi{warmup} recipe \ra run};
+\item \cmd{\red{When \mi{MaxiGauge} \ra \mi{Channel 5} reads 800\,mBar get readt}};
+\item \cmd{Proceeding clockiwse, close  all of the values in the  cirulation cycle V7\ra V4\ra
+    V1\ra V3\ra V10 \ra Scroll \ra V13};
+\item \cmd{Remove trap from the can. \red{Close the can with the lid}};
+\item \cmd{Turn off the BlueFors little box};
+\item \cmd{Go outside and  close the dump valve by turning black handle  (which you can't see)
+    clockwise (from its perspective).}  All of the helium will be trapped in the dump, so that
+  it can be reused in the next cycle;
+\item After a few days, you can vent.  \cmd{\mi{V19} \ra \mi{V16} \ra \mi{V14}.}
+\end{enumerate}
+
+ \subsection{Pumping the trap}
+ The trap, which  distills all kinds of gasses  that leak into the Helium system,  needs to be
+ pumped before the next cooldown:
+ \begin{enumerate}
+ \item \cmd{Make sure the trap is out of the canister};
+ \item \cmd{\mi{V2 Scroll} \ra V21 \ra V17 \ra V7}. \red{Wait for 1 hour!}
+ \item \cmd{V7 \ra V17 \ra V21 \ra \mi{V2 Scroll}}.
+ \end{enumerate}
+ 
+ \subsection{Heating up the cell}
+ If we want to increase  the temperature in the cell, we need to apply  the heater in the blue
+ Force program.   Standard: Control channel  = 6, heater =  current, heater resistance  = 120,
+ puase time = 60, proportional = 10, integral = 2, derivative = 0.
+ \begin{enumerate}
+ \item \mi{Maxigauge}  \ra \cmd{turn  off 1,  2,5 } \ra  the temperature  readings on  the box
+   should read \mi{disable};
+ \item \cmd{\mi{Heater setup} \ra \mi{control mode} \ra \mi{closed}};
+ \item \cmd{Set the \mi{setpoint} temperature you want};
+ \item \cmd{change  the \mi{heater range} current  \red{1-10mA} depending on how  fast you are
+     hating} \red{You  may need to increase  the \mi{Heater Limit},  as it acts as  the safety
+     stopper (to not overshoot the current).};
+ \item \red{\mi{Write settings}};
+ \item \cmd{Monitor temperature and make sure not to overshoot.}
+ \item \cmd{\mi{Heater setup} \ra \mi{control mode} \ra \mi{off}} \ra \mi{Setup} \ra \cmd{turn
+     on 1, 2,5 }
+ \end{enumerate}
+
+ \subsection{Computer monitoring BlueForce}
+ \label{sec:comp-monit-bluef}
+
+ \begin{enumerate}
+ \item To connect to the BlueForce logs, \cmd{log 192.168.0.4} with password \cmd{resonator1}
+ \item To access monitor connect \cmd{TightVNC viewer} with password \cmd{qubit2}
+ \end{enumerate}
+ \newpage

@@ -1,0 +1,95 @@
+\section{Chalmers electron beam lithrographer Raith}
+  Big machine which operates in a Linux environment. Make sure that files of the correct format are prepared in \cmd{.gpf} format.
+  
+  \subsection{Loading}
+   Load the sample onto the holder tray. \red{Take extra caution when doing this - sapphire crystals are very expansive.}
+   \begin{enumerate}
+   	\item \cmd{Get holder No.1 \ra slide onto the metal tray \ra Push lever on the side and turn} to fix the sample;
+   	\item \cmd{Load the sample - } \red{The orientation is very important! X runs from Faraday cup to bottom of tray - Y runs from left to right};
+   	\item Name of sample position = \cmd{Holder No + Position e.g. 23};
+   \end{enumerate}
+
+  \subsection{Aligning}
+   Move the sample to microscope to fix rotation and height for each sample.
+   \begin{enumerate}
+   	\item \cmd{Slide tray onto microscope \ra Fix with lever \ra Focus with dial on barrel};
+   	\item \cmd{Remove tilt with \mi{lever}}. Slide it in and push from/away to rotate. Get accuracy of $ \pm 0.2^{o} $;
+   	\item \cmd{Turn \mi{Vistec} on \ra Adjust height in 3 location using \mi{thumbscrews} \ra \red{Squeeze middle springs after each adjustment!}}; 
+   	\item \cmd{Go to Faraday cup \ra Click $ X_0, Y_0 $ to set this as origin \ra go to global markers} (ones defined in design) \ra \cmd{write down coordinates \ra on computer click $ \sharp $ \ra click \mi{grab position} to store coordinates;}
+   	\item \cmd{Click \mi{lock vent} \ra after hissing sounds load tray into \red{correspondingly numbered slot!} \ra \mi{lock vacuum}};
+   \end{enumerate}
+
+  \subsection{Computer}
+   Should be logged onto system by now and have terminal and main program opened. The cjob file structure is given in another chapter.
+   
+   \begin{enumerate}
+   	\item \mi{EBG500} \ra \cmd{open \mi{csys}} (vacuum) \ra \cmd{open \mi{csem}};
+   	\item \cmd{Load terminal;}
+   	\item \cmd{Click \mi{load pattern} \ra choose pattern} that was created and exported in \mi{cjob};
+   	\item \cmd{Click \mi{load current} \ra choose current} set in the cjob file;
+   	\item \cmd{Click $ \sharp $ \ra select file \ra in position} (which should have been grabbed or enter manually) \cmd{add \mi{-f}} to signify that coordinates of global marker are relative to Faraday cup;
+   	\item \cmd{Check \mi{No unload} box};
+   	\item Holder = TrayNo Position No e.g. 31;
+   	\item \cmd{\mi{Submit}};
+   	\item \cmd{Press arrow} to load tray.
+   \end{enumerate}
+
+   EBL now knows where to go when starting job.
+ 
+  \subsection{Alignment inside SEM}
+   Utilise the following commands
+   
+   \begin{table}[h]
+    \caption{Remove \mi{/r} to move absolute. Type \mi{-h} for help.}
+   	\centering
+   	\begin{tabular}{|p{5cm}|c|}
+   		\hline\textbf{Command} & \\\hline
+   		mcur & move to Faraday cup and measure current\\
+   		mvm & locate marker in local area\\
+   		mvm /r \mi{x},\mi{y} \mi{markerType} & Move relative \mi{x} and \mi{y} and locate marker of \mi{markerType}\\
+   		mpos /r \mi{x},\mi{y} & move relative from current position\\
+   		&\\
+   		marker -r & Show all defined marker types\\
+   		marker -a \mi{name} \mi{shape} \mi{pos/neg} \mi{SizeX},\mi{SizeY} & create new marker\\
+   		marker -l & load new marker\\
+   		& \\
+   		tpos -a \mi{name} \mi{markerType} & save stage coordinate\\
+   		tpos -uh \mi{name} & update \mi{name} with current position\\
+   		tpos -u \mi{name} & move to \mi{name} and reupdate position\\
+   		\multicolumn{2}{|c|}{SEM window}\\
+   		pmhv & control brightness\\
+   		semon & turn beam on\\
+   		pmgm height & measure height\\\hline
+   	\end{tabular}
+   \end{table}
+   
+   \subsubsection{Manual} Define the three global markers ourselves. The coordinates of the first one have been captured above. For the other markers, calculate the rough positions of the other markers and then use \mi{mvm} command to get accurate coordinates.
+   
+   \cmd{Type in terminal}
+   
+   \begin{center}
+   	SETWFR \mi{x1Stage},\mi{y1Stage} \mi{x1Design},\mi{y1Design} -t \mi{markerType} -m \mi{x2Design},\mi{y2Design} \mi{x3Design},\mi{y3Design},
+   \end{center}  
+
+   \noindent which should find the markers, turn the stage and output the observed X and Y coordinates of each of the three markers.
+   
+   \cmd{Convert these X and Y into microns \ra go to processes \ra \mi{edit process} \ra type in the parameters X1,Y1 X2,Y2 X3,Y3\ra \mi{submit}}.
+   
+   \subsubsection{Automatic} Only the first global marker needs to be found. The coordinate should already by in processes e.g. \mi{-f 50123,454354}. In terminal
+   
+   \begin{center}
+   	SETWFR \mi{x1Stage},\mi{y1Stage} \mi{x1Design},\mi{y1Design} -t \mi{markerType}
+   \end{center}  
+
+   \noindent so now the SEM knows the real position of the global marker. 
+   
+   \subsection{Run and unload}
+   \begin{enumerate}
+   	\item To run, drag black line over the process created;
+   	\item \cmd{Monitor with \mi{cpro}};
+   	\item \cmd{Unload by pressing \mi{black arrow}\ra \mi{vent lock} \ra unload tray;}
+   	\item \red{REPLACE TRAY, TIGHTEN SCREWS, LOGOUT SYSTEM, LOCK VACUUM}   \end{enumerate}
+   
+   
+ \newpage
+ 

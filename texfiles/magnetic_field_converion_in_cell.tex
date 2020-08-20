@@ -1,0 +1,41 @@
+% -*- TeX-master: "../fat_manual.tex" -*-
+
+\section*{Magnetic field - current conversion during experiment}
+The proportionality constant converting mA to Gauss:\newline
+
+\begin{equation}
+  \label{eq:gauss_coil}
+  \begin{aligned}
+    \text{Cell}_T & = 1.65\,\left[\text{G/mA} \right]\\
+    \text{Cell}_A & = 1.56\,\left[\text{G/mA} \right]\\
+  \end{aligned}
+\end{equation}
+
+\noindent Therefore  the flux  through the qubits,  \red{which we  count in number  of $  \mu $m
+  squares e.g. 40}\ec
+
+\[
+  \Phi = \text{Cell}_{T/A} \times I_{mA} \times \text{$\mu$m squares}
+\]
+
+\noindent
+
+\begin{framed}\noindent
+  For one period, $ \Phi_0 $, we have a current period of:
+  \[
+    \left\lbrace\begin{aligned}
+        \Phi_0 & = \text{Cell}_{T/A} \times I_0 \times \text{$\mu$m squares}\\
+        20.67\times 10^{-16} & = \text{Cell}_{T/A} \times I_0 \times \text{Squares} \times \blue{10^{-16}}\ec.
+      \end{aligned}\right. \Rightarrow \red{I_0 = \frac{20.67}{\text{Cell}_{T/A}\times \text{Squares}}}\ec
+  \]
+
+  \noindent
+  \begin{itemize}
+  \item $ I_{0} $ in units of mA;
+  \item $\text{Cell}_{T/A}$ in units of G/mA;
+  \item Squares is number of $\mu$m$^2$ squares.
+    % \item Gausses and $\mu$m already taken into account by the \blue{$ 10^{-16}$}\ec.
+  \end{itemize}
+\end{framed}
+
+\newpage

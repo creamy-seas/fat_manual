@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{377.07343903bp}%
+    \setlength{\unitlength}{424.51939025bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,7 +48,7 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.10229781)%
+  \begin{picture}(1,0.90327807)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{cassette_load.pdf}}%
   \end{picture}%
 \endgroup%

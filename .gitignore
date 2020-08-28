@@ -1,6 +1,6 @@
 .dumbjump
 _output
-*pdf
+*.el
 *aux
 *bbl
 *bcf

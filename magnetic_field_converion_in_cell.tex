@@ -1,0 +1,29 @@
+% -*- TeX-master: "../fat_manual.tex" -*-
+
+\section*{Magnetic field - current conversion during experiment}
+The proportionality constant converting mA to Gauss:
+
+\begin{equation}\label{eq:gauss_coil}
+  \begin{aligned}
+    \text{Cell}_T & = 1.65\,\left[\text{G/mA} \right]\\
+    \text{Cell}_A & = 1.56\,\left[\text{G/mA} \right]\\
+  \end{aligned}
+\end{equation}
+
+\noindent Therefore to map flux to current:
+
+\begin{equation}
+  \Phi = I_{mA} \times \red{\text{Cell}_{T/A}} \times \blue{\text{Area}}
+\end{equation}
+
+\begin{framed}\noindent
+  \noindent or in SI units:
+
+  \begin{equation}
+    \begin{aligned}
+      n_{\Phi} & = \frac{\Phi}{\green{\Phi_{0}}} = I_{mA} \times \red{\text{Cell}_{T/A} \times 10^{-4}} \times
+      \blue{\text{Area}_{\mum^2} \times 10^{-12}} \times \frac{1}{\green{2.067 \times 10^{-15}}}\\
+      & = \frac{I_{mA} \times \red{\text{Cell}_{T/A}} \times \blue{\text{Area}_{\mum^2}}}{20.67}
+    \end{aligned}
+  \end{equation}
+\end{framed}

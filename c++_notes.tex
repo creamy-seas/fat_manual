@@ -1,0 +1,144 @@
+\section{C++ notes and reminders}
+\red{Beware of integer  multiplication - it can easily go  out or range
+  and give a negative number! Make sure you covnert to doubles first}
+
+\begin{itemize}
+\item To create lib file from a def file:
+  \begin{center}
+    \texttt{Visual studio command prompt  (an application) \ira lib.exe
+      /def:foo.def};
+  \end{center}
+\item ADQAPI.dll contains commands for execution;
+\item ADQAPI.h contains the function prototypes;
+\end{itemize}
+
+\section{Threading}
+\begin{itemize}
+\item 4-core computer downstairs;
+\item Do not let threads access the same variables;
+\end{itemize}
+
+\section{Project Compilation}
+\subsection{Compilation}
+\begin{enumerate}
+\item Create the project;
+\item   Copy   \cmd{ADQAPI.lib,    AQQAPI.h,   fftw3,   libfftw3-3.dll,
+    libfftw3-3.lib} to  ./lib and add them  to the relevant lib  tab in
+  solutions explorer;
+\item Right  click on the project  in the sidebar \ira  properties \ira
+  linker  \ira input  and enter  \cmd{ADQAPI.lib} into  \cmd{additional
+    dependencies};
+\item Add \cmd{\#include ``ADQAPI.h"/``fftw3.h''} into the cpp file you
+  need them in;
+\item  Next  to  \cmd{debug  \ira  Solution platform}  to  x64  or  x86
+  depending on  the library being  used.  x86  is good enough  for most
+  parts.
+\item \cmd{General \ira Output Directory \ira \quote{\$(ProjectDir)bin}}
+\item     \cmd{General     \ira    Intermiediate     Directory     \ira
+    \quote{\$(ProjectDir)build}}
+\item \red{To run a  DLL (C++ or python) it needs to  be in the project
+    folder.}   Project options  \ira  Debugging  \ira Enivronment  \ira
+  \cmd{PATH=\%PATH\%;\$(ProjectDir)lib}.
+\end{enumerate}
+\subsection{Linking External Libraries}
+\begin{itemize}
+\item A static library (.lib) is copied fully into program;
+\item A  program that uses  a DLL library  (.dll), will only  load it's
+  functions at run  time.  For this to happen, the  dll file must exist
+  at run time:
+  \begin{itemize}
+  \item It still requires a .lib file;
+  \item This lib file contains  wrapper functions, that the linker puts
+    into the main program.  It's fast for the linker to do this;
+  \item At  run time function  called ->  stub found in  .lib (function
+    calling function from dll) \ira dll function called;
+    \begin{framed}\noindent
+      \texttt{Linker \ira General \ira Additional Library Directories =
+        \$(ProjectDir)lib} \vspace{1em}
+
+      \texttt{Input -> Additional Dependencies -> libfftw3.lib}
+    \end{framed}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Important Errors with Digitiser}
+\begin{itemize}
+\item Use ADC capture lab to connect to device. If in the log window it
+  says \quote{Device not found}.
+
+  \cmd{Turn off  the computer the PXIe-1065  box. Turn the box  on \ira
+    turn computer on};
+\item Do  NOT run ADCaptureLab  and attempt  to communicate via  C++ or
+  something;
+\item Once buffers have been allocated, make sure that for GetData, the
+  third argument number of bytes per buffer element, must be set to the
+  type size of the buffer. For int  it should be 4. For short it should
+  be 2;
+\item LabView operates in 32 bit mode (i.e. x86, and therfore DLLs made
+  for it must be  run in x86 debug mode + need to  use the 32bit ADQAPI
+  libraries);
+\item Calibration  is $  2^{16} $  levels/2.2V =  29789.1levels/Volt so
+  resolution is 33$ \mu $V;
+\item Max out the number of samples and minimize number of records;
+\end{itemize}
+
+\section{Making a DLL}
+\begin{framed}\noindent
+  To make DLL suppose the project name is \texttt{Ilya\_Dll}
+\end{framed}
+\begin{enumerate}
+  \begin{framed}\noindent
+    \quote{\#ifdef  ILYA\_DLL\_EXPORTS}   \hfill  \quote{\red{derived
+        from the project name}}
+
+    \texttt{\#define        ANYNAME\_declspec(dllexport)}        \hfill
+    \quote{\red{this macro is use when DLL is being made by VS}}
+
+    \texttt{\#else}
+
+    \texttt{\#define        ANYNAME\_declspec(dllimport)}        \hfill
+    \quote{\red{this  macro is  used when  DLL is  used by  LabView to
+        import the functions}}
+
+    \texttt{extern "C" ANYNAME void name(parameters etc); }
+  \end{framed}
+
+\item Create .cpp  file, where the ADQAPI functions  are wrapped inside
+  these exporting/importing functions;
+\item Build \ira Build Ilya\_DLL;
+\item \red{LabView  \ira \cmd{call  library function node}  \ira double
+    click and navigate to the DLL, created in the projects debug folder
+    WILL NOT WORK!!!!!}  !!!!!!
+
+\begin{framed}\noindent
+  \quote{ADQAPI.}   \hfill   \quote{\red{this  takes  the   DLL  from
+      C:/Windows/SysWOW64/ADQAPI.dll}.   The  star  makes  this  import
+    platform independent}
+
+  Alternatively, I copied that DLL into  the LabView folder, gaves it a
+  name  such as  Imperium\_ADQ.dll and  imported `Imperium.dll'  and it
+  worked
+\end{framed}
+\item Or just use  the libraries made by SPDevices. I  am using the DLL
+  in ADQAPI folder!!  For declaring the parameters types (replicate the
+  names from the function data sheet)
+
+\begin{framed}\noindent
+  Thread: Run in UI thread
+
+  Calling convention: C
+
+  Error checking: default
+
+  void*  \ira numeric,  unsigned 32-bit  integer, value  (adq\_cu\_ptr)
+  uint32\_t
+
+  unsigned  int \ira  numeric,  unsigned  32-bit integer  (adq214\_num)
+  uint32\_t
+
+  int \ira numeric, singed 32-bit integer int32\_t
+\end{framed}
+\end{enumerate}
+
+
+\newpage

@@ -1,0 +1,413 @@
+\section{RHUL Old Scanning Electron Microscope\label{sec:sem}}
+\begin{framed}\noindent
+  SEM is  used to  make images,  or to trace  out the  desired pattern
+  loaded from nanomaker. In this section,  we describe how to load and
+  prepare the SEM for tasks.
+
+  \begin{enumerate}
+  \item If  vacuum is  bad \cmd{\quote{Sample}  \ira \quote{Specimen
+        chamber}  \ira \quote{stage  drawout} \ira  \quote{evac}} to
+    pump the machine
+  \item If  \quote{HT ON} is  not working, its because  nanomaker has
+    control of  the machine.  \cmd{Go to nanomaker  \ira \quote{File}
+      \ira  \quote{Exposure}  \ira   \quote{Hardware  control}  \ira
+      \quote{ExtScanOff} \ira \quote{Beam On}}.
+  \item If vaccuum system halted  \ira \cmd{quit program \ira turn SEM
+      off and then on with key \ira} usual pumping begins;
+  \item \begin{itemize}
+    \item \textbf{Aperture  1} for  high detailed images.  \red{Do not
+        exceed 32 spot size!}
+    \item \textbf{Aperture 2} has no restriction on current
+    \end{itemize}
+  \item \begin{itemize}
+    \item \textbf{Scan 1} for focusing
+    \item \textbf{Scan 2} for general movement
+    \item \textbf{Scan 3} for high quality image. \red{Click freeze to
+        freeze the scan}
+    \item \textbf{Scan 4} for high quality image that also freezes
+    \end{itemize}
+  \item RP1  - Rotary pump  first pumps  the diffusion pump,  then the
+    chamber, then the diffusion pump works on the chamber
+  \end{enumerate}
+\end{framed}
+
+\subsection*{Change filament}
+
+\begin{itemize}
+\item    \quote{Gun}   \ira    \quote{Filament}   \ira    \cmd{press
+    \quote{Vent}} to vent gun chamber;
+\item  \cmd{Lift cap  \ira pull  cone out  \ira unscrew  \red{EXTERNAL
+      SCREWS}  with alan  key, release  the  flat screw  and take  out
+    filament};
+\item  \cmd{Clean with  stick polish  and  cotton pad  \ira wash  with
+    acetone} so that there is no black;
+\item \cmd{Take  new filament, put ring  on it \ira dip  into the cone
+    \red{making sure that small indent  on filament is on the opposite
+      end to the slot in the cone}};
+\item \cmd{Tighten external  screws and flat screw \ira  use screws in
+    the ``caves of the cone" to adjust filament position};
+\item \cmd{Slot into SEM \ira press \quote{evac}}.
+\item When the  SEM is working, \cmd{click \quote{gun}  and slide the
+    four  sliders to  get the  maximum brightness}  to compensate  for
+  offsets;
+\end{itemize}
+
+  \subsection*{Beam blanking}
+  For \quote{Beam  ON/OFF} on Nanomaker  we use a blanker.  The small
+  module responsible for it is a box made by Deben.
+  \begin{itemize}
+  \item Make sure that it reads \quote{Beam blanking ON 200V};
+  \item \cmd{Change voltage to 200V by \quote{Plate voltage arrows}};
+  \item If beam blanking is inverted in Nanomaker (beam doesn't go off
+    when  pressing  \quote{beamOff})   \ira  \cmd{Press  \quote{Beam
+        Status - Blank} button};
+  \end{itemize}
+
+  \subsection{Loading}
+  \begin{enumerate}
+  \item The loading chamber should  be vented already \ira Evac button
+    on screen should be grey.
+  \item \red{Put on a healthy scratch  on the resist for good focusing
+      if resist thickness is greater than 100nm}
+  \item Attach the sample onto the doughnut shaped container. Screw on
+    well. Top of sample, must be near  the end of the doughnut that is
+    \red{symmetrical}. Should look like two frog legs.  Open door \ira
+    Slide  onto the  rails \red{if  it doesn't  want to  go in,  try a
+      different orientation.} Close the door.
+  \item \texttt{Sample \ira Evac  \ira Airlock chamber}, will evacuate
+    the chamber  the sample was loaded  in to a low  pressure. It will
+    beep when done and button stays green. Takes 30sec.
+  \item \red{Turn  the open handle, to  open the door from  the sample
+      stage to the SEM.}
+  \item Raise rod  down. \red{Do no touch the  rod!!!!!!} Move forward
+    {and twist}  to grab hold of  the sample. Push the  sample all the
+    way  in {it  becomes hard  towards the  end} and  \red{remember to
+      unlock!!!}. Draw the rod out.
+  \item \red{CLOSE THE DOOR BETWEEN THE SEM AND THE SAMPLE CHAMBER!!}
+  \item Wait 10 minutes for the SEM to pump to low pressure again.
+  \item \texttt{Initial position  \ira Go}, to move the  sample to the
+    operational area.
+  \end{enumerate}
+
+  \subsection{Calibrating}
+  The following steps calibrate the SEM for operation.
+
+  \begin{enumerate}
+  \item  First of  all set  the current  and voltage  to the  required
+    values.  This  is  done  at  the bottom  of  the  program  on  the
+    screen. $I\approx10pA$  and $V\approx30keV$. The  Working Distance
+    (WD)$\approx20mm$. For  the 2D flakes,  we were at  24pA. \red{The
+      lower  the   current,  the  better  the   precision.}  Push  the
+    \texttt{MDN} and \texttt{AVG} buttons  on current meter to average
+    readings.
+  \item  \cmd{Change working  distance to  20$  \mu $m  for general  and
+      10$ \mu $m for fine structures like meanders};
+  \item \red{\texttt{Turn the SEM on by clicking the HT ON button}.}
+  \item Choose the  correct aperture, by pulling lever on  the side of
+    the   SEM    towards   you    and   twisting   to    the   desired
+    selection.   Aperture  1   is   the  smaller   -   has  the   best
+    precision. \red{Do not exceed 32  spot size}. Aperture 2 is larger
+    and  can sustain  spot  sizes  greater than  40  and  is used  for
+    imaging.
+  \item \red{\texttt{Ensure that  X/Y is chosen on  the controller for
+        the movement.}}
+  \item Go to  the Coulomb dot (black  dot), and zoom in  on it. Check
+    that the current is the value that you selected.
+  \item  \texttt{Press ACB  button},  which  automatically adjust  the
+    brightness and contrast.
+  \item  \texttt{Press  R  button  on   the  keyboard  and  align  the
+      structure}. If  needed, \texttt{click on the  sample location on
+      the SEM screen, and manually  enter the rotation in degrees that
+      is required.}
+  \item Zoom to $\approx$x200000 onto  a nice edgy structure like Rais
+    dots
+  \item \textbf{Wobbling}  - \texttt{Tool->OL Wobbler}, will  make the
+    image oscillate - essentially if the aperture is at an angle, then
+    going in  and out of  focus will have  the effect of  shifting the
+    image. Turn the dials on the rod that sticks out the SEM to reduce
+    the wobbling as much as possible. Turn the wobbler off.
+  \item \textbf{Astigmatism and  focus} - \texttt{Press scan  1, to go
+      to the near  field. Hold down the focus button,  and move up and
+      down to focus.  If the focus is different in  the horizontal and
+      vertical directions, do the same for the X and Y astigmatism.}
+  \item \textbf{Gun alignment} - align the gun by \texttt{changing the
+      X Y and Z}, until the current in the coulomb dot, is maximised.
+  \end{enumerate}
+
+  \subsection{Prepare for use with nanomaker}
+  Now that  the SEM  is calibrated  (should be  done after  each large
+  movement), we need to prepare it to communicate with nanomaker.
+
+  \begin{enumerate}
+  \item Focus on the scratch or near the sample at x100000;
+  \item Go  to the  required magnification.  E.g. x4000.  For graphene
+    flakes  it was  x350.  \red{\texttt{Inst Mag  on  the keyboard  to
+        remember this value}}. This is useful  if you need a very high
+    magnification during exposure, but you cant use it during focusing
+    as it would expose the whole resist.
+  \item  Move  the  the  required  structure.  \texttt{INST  MAG}  and
+    \red{quickly}    \texttt{Double   click}    to   center    without
+    overexposing.
+  \item   \red{On    Nanomaker   in    Sec.\ref{sec:nanomaker}   click
+      \texttt{BEAM OFF\ira  INST MAG}  (if required)  \texttt{\ira EXT
+        SCAN ON}}
+  \end{enumerate}
+
+  \subsection{Ending session}
+  \begin{enumerate}
+  \item Zoom  out and  \red{\texttt{HT off} to  turn off  the electron
+      gun}.
+  \item \texttt{Sample \ira initial position}  to move the sample back
+    for extraction.
+  \item \red{Wait 5 minutes} to allow the tungsten cathode to cool. If
+    you  begin venting  before  this  time, TuO  strings  form on  the
+    filament,
+  \item  Evacuate  the  loading chamber  \texttt{Sample  \ira  Airlock
+      chamber  \ira Evac}.  It will  beep  when ready  and show  green
+    button.
+  \item  Open the  shutter, put  the rod  in \red{the  hold position},
+    extract. Twist to unlock and place rod.
+  \item \red{Close the shutter once finished.}
+  \item Can take out as soon as required.
+  \end{enumerate}
+
+
+  \subsection{Taking image}
+  \begin{enumerate}
+  \item \quote{Scan 4} \ira \quote{File} \ira \quote{Save as};
+  \item Take data from the computer underneath the desk.
+  \end{enumerate}
+  \newpage
+
+  \section{Nanomaker\label{sec:nanomaker}}
+  \subsection{Communication with SEM}
+  To pass on control between the SEM and the nanomaker program:
+
+  \begin{enumerate}
+  \item  \texttt{Click  the  exposure  button,  or  go  to  File  \ira
+      Exposure}.
+  \item \texttt{Select  Hardware control to  open up a small  block of
+      buttons}
+  \item To  go from  SEM to nanomaker:  \texttt{Beam Off  \ira ExtScan
+      On}.
+  \item To  go from  nanomaker to SEM:  \texttt{ExtScan Off  \ira Beam
+      On}.
+  \item  Remember,  that  if the  scan  need  to  be  done at  a  high
+    magnification,  \texttt{to  flick  the  INST  Mag  button}  before
+    proceeding.
+  \end{enumerate}
+
+ \subsection{Marker files}
+ Marker  files are  used to  align the  field, so  that the  design is
+ exposed in the  correct area. For example, changing  the current will
+ distort the image taken by the SEM.
+
+ However,  if  one definitely  knows  the  position of  some  markers,
+ e.g. crosses at $200\mu m$ separation, then one can
+ \begin{itemize}
+ \item Define that Marker A is at position $(200,50)\mu m$ etc.
+ \item After  scanning the image with  the SEM, click on  the image to
+   define where the center of Marker A is.
+ \item The  program will stretch, move,  twist the image, so  that the
+   positions   you  clicked   on  the   screen  get   the  coordinates
+   $(200,50)\mu m$ etc.
+ \end{itemize}
+
+ \red{\LARGE  Always load  the parameter  file when  creating markers,
+   opening markers etc.  This sets the correct field  size (the yellow
+   border). \texttt{Options \ira load PAR.}}
+
+ Now how to create marker files
+ \begin{enumerate}
+ \item \red{It  is crucial  that you know  what magnification  you are
+     working on. Otherwise the position of the markers will be for the
+     incorrect working field.}
+ \item \texttt{File  \ira new Video  control file} to create  a marker
+   file.
+ \item \texttt{Marker \ira Define marker} to access the markers in the
+   field. Here you set
+   \begin{enumerate}
+   \item The  size of  the field  that is  going to  be used.  Too big
+     causes too  much exposure.  Too small,  and you  wont be  able to
+     locate the markers.
+   \item The coordinate of the field area.
+   \end{enumerate}
+   By default there is a zero marker  for the centre of the field. Use
+   it to set the size of the field.
+ \item \texttt{Add Marker} and define its position (usually determined
+   from the  file were the  marker was designed)  and the size  of the
+   image  that  is   taken  around  that  position,   to  help  during
+   alignment. Create as many markers as needed.
+ \item \red{Save  as a .mrk file.  Ensure that both the  file type and
+     the ending .mkr are used.}
+ \end{enumerate}
+
+ To use  the marker files,  load them in  nanomaker, and make  sure we
+ have control on the SEM that is positioned close to the markers.
+
+ \begin{enumerate}
+ \item  \red{\texttt{Video \ira  set align  parameters \ira  reset} to
+     reset any previous  adjustments. Do not do this, if  you want the
+     field orientation to remain the same.}
+ \item \texttt{Video \ira Get all Video},  takes a scan of the regions
+   where we defined the markers.
+ \item \cmd{For fields  were markers are very close  to exposure field
+     \red{for initial alignment take video on one marker to not expose
+       others} i.e.  press \quote{v} instead of  \quote{a} and apply
+     shift} \ira \cmd{then do the alignment with all the markers};
+ \item  \cmd{If you  dont want  to use  certain markers  for aligning,
+     don't set the  's' center point on them} this  may be required if
+   many markers keep not aligning;
+ \item For  each marker \texttt{Mark  \ira select center},  and select
+   where  the  marker  is  on the  image.  \red{\texttt{Video\ira  set
+       alignment  parameters  \ira  reset   zoom  for  large  patterns
+       \quote{x=1,  y=1} to  prevent resizing  pattern BUT  FOR SMALL
+       PATTERNS DONT DO THIS!!!!\ira calculate} to apply the changes.}
+ \item \texttt{Video \ira Get all  Video}, to see how the recalculated
+   field aligns  with the defined  markers. Keep repeating.  With each
+   iteration,  twisting  etc  will  make sure  that  the  markers  you
+   defined,   and  the   markers  you   select  on   the  screen   are
+   aligned.  \red{Assumes   that  we   are  always  working   a  fixed
+     magnitude.} We can no expose.
+ \end{enumerate}
+
+ \subsection{Taking an image}
+ \red{\Huge Always use aperture 2 for currents above 32pA!!!!}
+ \begin{itemize}
+ \item \cmd{Click \quote{SRT}} to rotate the image;
+ \item \texttt{File  \ira new  Video control file}  to create  a blank
+   file.
+ \item  \cmd{\quote{Mark}   \ira  \quote{Define  Mark}   and  select
+     460x320$ \mu m $} to fill up whole sector with image;
+ \item \cmd{Select resolution of image using \quote{Size [pix]}};
+ \item  \texttt{Video  \ira Get  All  Video}  takes  an image  of  the
+   specified size.
+ \item Save as a \red{.tif and ensure that the file type is also TIF.}
+ \end{itemize}
+
+ \subsection{Pattern}
+ \begin{itemize}
+ \item  \cmd{From autocad,  save the  image in  format \quote{R12/LT2
+       DXF}, by  using \quote{saveAs} and  clicking on the  drop down
+     arrow next to the file name;}
+ \item \texttt{File  \ira New  database} to create  a blank  sheet for
+   working on.
+ \item \red{\texttt{Options \ira  Load PAR \ira 350.par}}  to load the
+   parameter  files for  resist, wafer,  magnification etc.  \red{MUST
+     DO.  Choose parameter  file in  correspondence with  the required
+     magnification 350 for large field, 800 for small field.}
+ \item Add a background  (for example if you want to  design on top of
+   an  image that  was already  taken) \texttt{View  \ira redraw  \ira
+     background}
+ \item  \texttt{View  \ira Draw  Layers}  in  order to  shift  between
+   different layers on the image. Convenient  to have all the files in
+   one place.  To create  a new layer,  draw object  \texttt{edit \ira
+     change attributes and set new layer.}
+ \item Draw using the standard tools. \red{If overlaps occur, then the
+     regions will  be given  a higher  dose. See  proximity correction
+     below to overcome this.} To repeat pattern \cmd{\quote{Transform
+       numeric}  \ira   set  the   \quote{dose  increment}   at  each
+     transformation}
+ \item Once drawn, there are two options to set the \% doses:
+   \begin{enumerate}
+   \item  Apply  the   proximity  correction.  \texttt{Proximity  \ira
+       Correction \ira Recommended} to get the menu to pop up. Here it
+     depends on  the lithography that  is being made. But  for example
+     for the 2D flakes:
+     \begin{itemize}
+     \item $\alpha=0.05\mu m$
+     \item Resist = PMMA 30-40keV
+     \item Substrate = Silicon
+     \item  Height =  $1\mu m$  \red{OF THE  RESIST! Use  thickness vs
+         rotation speed graphs to determine this}
+       % \item Beam = 24pA
+       % \item Sensitivity = 200
+     \end{itemize}
+     \red{\texttt{Apply  proximity  correction  by pressing  SET}}  in
+     order  for the  new parameters  to  be used.  The regions  should
+     change colour once this is done.
+   \item For fine structures i.e. DC samples etc, the dose must be set
+     manually.  Use  the  above   proximity  correction  procedure  to
+     evaluate the  required doses - one  will find that the  doses are
+     uniform (the structures  are so small, that one does  not need to
+     account for the wide backscattered Gaussian)
+     \begin{itemize}
+     \item   \cmd{Select  structures   \ira  \quote{edit\ira   change
+           attributes \ira set dose}}. The doses we need to set are:
+
+       \begin{center}
+         \begin{tabular}{|c|c|c|c|}
+           \textbf{Structure size} & $ \ge 0.2\,\mu $m & $ 0.2\,\mu $m & $ \le 0.1\,\mu $m\\
+           \textbf{Dose \%} & 166 & 181 & 200
+         \end{tabular}
+       \end{center}
+     \end{itemize}
+   \end{enumerate}
+ \end{itemize}
+
+ \subsection{Preparing and exposing parameters}
+ \begin{enumerate}
+ \item    \texttt{Options    \ira     Exposure    and    video    \ira
+     \quote{Step/Times}}  to set  the exposure  parameters (\red{note
+     that this is different from the proximity correction above. Above
+     we just varied the \% dosage that we apply to shapes. Here we set
+     the base dose (the 100\% from  which the absolute value of the \%
+     doses  will be  derived)that the  electron beam  delivers}). This
+   will vary  from lithography to  lithography, and the values  we use
+   are the same as for the proximity correction e.g.
+   \begin{itemize}
+   \item $\alpha=0.05\mu m$
+   \item Resist = PMMA 10-40keV
+   \item Substrate = Silicon
+   \item Height = $0.5\mu m$
+   \item I = 24pA
+   \item Dose = 90$ \mu $As/cm$ ^{2} $
+   \item Sensitivity = 200
+   \end{itemize}
+   \red{\texttt{Click  OK  \ira  click   the  three  buttons  next  to
+       numerical values} to set parameters!!!}
+ \item If  the \quote{area dwell  time} is $  \ge 10\, \mu$s,  then you
+   need to increase  the step size in  the step menu e.g.  from 0.1 to
+   0.125$ \,\mu $m, so that the beam doesn't jump around too fast.
+ \item \red{\texttt{Options \ira  Load PAR \ira 350.par}}  to load the
+   parameter  files for  resist, wafer,  magnification etc.  \red{MUST
+     DO.  Choose parameter  file in  correspondence with  the required
+     magnification 350 for large field, 800 for small field.}
+ \item Do the marker alignemnt described above
+ \item  \texttt{Layer}  to select  the  layer  of  the drawing  to  be
+   exposed.
+ \item A 100\% dose corresponds to the following formula:
+   \begin{equation}
+     \text{Dose} = \frac{I\times \tau}{\text{Pixel}^{2}},
+   \end{equation}
+   \noindent where we set \textbf{Dose}, \textbf{I} in \quote{options
+     \ira times  \ira recommended} and \textbf{pixel}  in \quote{step
+     size}. The  dwell time  $ \tau  $ evaluated  from this  \red{must be
+     $ \ge 10\mu $s or the beam will jump around too fast}
+ \item \red{For small structures \cmd{\quote{Options}\ira choose x or
+       y  direction \ira  \quote{simulate} (in  exposure window)}  to
+     trace out how beam will jump. Choose X or Y direction where there
+     are fewer jumps (beam jumping  is bad)}. Normally no optimistaion
+   is the best!
+ \item Finally click \quote{start} and don't touch the table.
+ \end{enumerate}
+
+
+ \subsection{Example design for flakes}
+ \begin{enumerate}
+ \item \red{\texttt{Options \ira Load PAR \ira 350.par}};
+ \item \cmd{Load sample and take image as .tif};
+ \item \cmd{Unload sample};
+ \item   \cmd{Start   designing   (ensure    that   you   still   have
+     \quote{350.par}) with the tif image as background};
+ \item \cmd{Apply proximity correction;}
+ \item \cmd{Use screen pointer to  find the coordinates of the markers
+     that are in the image. \red{Write them down}};
+ \item  \cmd{Create  marker   files,  and  put  the   markers  in  the
+     coordinates taken above}  - this means that the  pattern you drew
+   will be mapped to the correct markers;
+ \item \cmd{Load and expose}.
+ \end{enumerate}
+
+
+ \newpage

@@ -12,9 +12,11 @@
 \begin{itemize}
 \item \red{Make sure gas is off on the \textbf{Vacuum Dashboard}};
 \item Click the \textbf{Loading} button on the top bar;
-\item Click \textbf{Exchange} and wait for stand to move and \red{wait for green light};
+\item Click \textbf{Exchange} and wait for stand to move and \red{wait for green
+    light};
 \item Pull the sample out;
-\item Click \textbf{Store} which will close the door. \red{wait for green light};
+\item  Click \textbf{Store}  which will  close  the door.   \red{wait for  green
+    light};
 \item Click \textbf{Vent} and wait for lock to open;
 \item Screw in the bar and pull out;
 \end{itemize}
@@ -22,9 +24,11 @@
 \subsection{Loading}
 \begin{itemize}
 \item Load the sample;
-\item Click \textbf{Store} which will pump the chamber;
+\item Click \textbf{Store} which will pump  the chamber \ira \red{wait for green
+    light};
 \item Click \textbf{Transfer} and push the stage in;
-\item Click \textbf{Store} again to pump loading chamber again;
+\item Click  \textbf{Store} again to  pump loading chamber again  \ira \red{wait
+    for green light};
 \item \red{Click \textbf{Resume}} and stage will move;
 \item Right click and \textbf{Helium On}
 \end{itemize}
@@ -35,7 +39,8 @@
 
 \subsection{Checking trimer}
 \begin{itemize}
-\item Click \textbf{SFIM/Normal} button and right click to turn on crosshairs. Check that on of atoms is in the center.
+\item   Click  \textbf{SFIM/Normal}   button  and   right  click   to  turn   on
+  crosshairs. Check that on of atoms is in the center.
 \end{itemize}
 
 \begin{framed}\noindent
@@ -45,6 +50,27 @@
   \item 16 lines averaging
   \end{itemize}
 \end{framed}
+
+\subsection{Building Trimer}
+\label{sec:building-trimer}
+
+\begin{itemize}
+\item Wizard
+\item Click \textbf{Form the timer};
+\item Tick \textbf{Enable} and click \textbf{Begin};
+\item Set the parameters:
+  \begin{itemize}
+  \item Magnification 1;
+  \item Extractor \texttt{-30kV};
+  \item Accelerator \texttt{25kV};
+  \end{itemize}
+\item Turn  the \textbf{contrast dial}  and optimise the  image. You will  see a
+  cloud of atoms, from which the trimer is built;
+\item Increase the magnitude of extractor \textbf{from -30kV to lower voltages.}
+  This  will pull  away atoms  from the  cloud; \red{Do  not increase  extractor
+    voltage larger than 2x the accelerator voltage i.e. $ \left|50kV\right|$.}
+\item Can also try to use pulse at \texttt{-2kV}.
+\end{itemize}
 
 %%% Local Variables:
 %%% mode: latex

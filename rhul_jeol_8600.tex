@@ -24,12 +24,15 @@ Password: Jeoleb% \subsection{Loading Sample}
 \item \cmd{Load cassette as below:}
   \begin{figure}[h]
     \centering
-    \def\svgwidth{6cm}\import{images_inkscape/}{cassette_load.pdf_tex}
+    \def\svgwidth{8cm}%
+    \import{images_inkscape/}{cassette_load.pdf_tex}
   \end{figure}
 
 \item \cmd{{Load, unload} \ira wait 3 seconds};
 \item \cmd{Check {Manual Loader Viewer} in jbxwriter \ira Blue means cassette is
     loaded};
+\item  Click \textbf{IV}  tab \ira  Once \textbf{V2}  and \textbf{V3}  both show
+  \textbf{Open}, operation can begin;
 \item It is  recommended to wait one  hour after loading for  the temperature to
   stabilise.   The  temperature  fluctuations  can be  checked  following  steps
   outlined  in  sec.~\ref{Temperaturefluctuations}.   During  the  exposure  the
@@ -47,8 +50,9 @@ done on the microscope next to the door.
 \begin{figure}[h]
   \centering
   \def\svgwidth{8cm}\import{images_inkscape/}{marker_position.pdf_tex}
-  \caption{\small To  align the chip, both  you need to defined  the PQRS global
-    markers and chip markers.\label{fig:marker_position}}
+  \caption{\small  To align  the  chip,  you will  need  to  store the  relative
+    coordinates (relative to  the center of the  window they are in) of  P, Q, R
+    and S.\label{fig:marker_position}}
 \end{figure}
 
 \begin{framed}\noindent
@@ -57,62 +61,167 @@ done on the microscope next to the door.
 \end{framed}
 
 \begin{itemize}
-\item \cmd{Select {cassette name} e.g.  {2inch multi E}};
-\item \cmd{Select {window}} e.g.  2E \ira \red{The window should turn red in the
-    program};
-\item \cmd{Locate  PQRS and the first  chip marker} and take  down the positions
-  \ira \red{make sure you know the real positions as well}
+\item Select \textbf{cassette name} e.g.  {2inch multi E};
+\item Select  \textbf{window} e.g.  2E \ira  \red{The window should turn  red in
+    the program};
+\item Locate PQRS markers, taking down their positions.
 
   \begin{table}[htbp]
     \centering
+    \caption{Coordinates, \label{tab:p-and-q}}
     \begin{tabular}{|l|c|c|}
       \hline
       \textbf{Marker} & \textbf{Design Location} & \textbf{Measured Location}\\\hline
-      P & -4000, 5000 & -4333, 5050\\
-      Q & +4000, -5000 & 3666, -4950\\
+      P & 0, 0 & -4333, 5050\\
+      Q & 8000, -10000 & 3666, -4950\\
       Chip & +100 relative to P & -4333, 5200 \\\hline
     \end{tabular}
   \end{table}
 \end{itemize}
 
-\subsection{GDS Conversion}
-If file is in \texttt{gds}-format, you first need to convert it to v30 following
-the steps below.  Note that each layer  has to be imported separately. Know your
-layers!
+\subsection{Creating the exposure program in JobMaker}\label{sec:jobmaker}
+
+\subsubsection{Basic Settings}
+\label{sec:basic-settings}
+
 \begin{itemize}
-\item Open ``jbxconv" on main console (DELL computer).
-\item Choose your file: File $\rightarrow$ Open.
-\item Choose \textbf{Structure} and \textbf{Layer}.
-\item Choose ``Size parameters".
-\item Command $\rightarrow$ Start Conversion $\rightarrow$ OK.
+\item Select Cassette name and choose window.
+\item Press Job Property and a window ``Job 1 Property" will pop up.
+\item In that window under the Calibration heading
+  \begin{itemize}
+  \item Select EOS Mode.
+  \item Choose your Condition File.
+  \item Choose your Calib. Menu which selects what pre-exposure calibration to perform. \textbf{TEST000} performs height detection. \red{Do not use this, if using windows A, B or C as height detection will fail}. Instead use \texttt{none}
+  \end{itemize}
+\item Under the Exposure Condition heading
+  \begin{itemize}
+  \item Choose Scan Step
+  \item Enter Beam Current
+  \item Choose OL Aperture
+  \item Choose dose (the resist does not matter)
+  \end{itemize}
 \end{itemize}
 
-\begin{table}[htbp]
-  \centering
-  \begin{tabular}{|p{3cm}|p{3cm}|c|c|}
-    \hline
-    \textbf{Parameter} & \textbf{Meaning} & \textbf{Where to enter} & \textbf{Example}\\\hline\hline
-    Cassette name & The big metal hunk being used & \hyperref[sec:marker_location]{Marker Location}, \hyperref[sec:jobmaker]{jobmaker}, \hyperref[sec:material-correction]{Material Correction} & \texttt{2 inch}\\\hline
+\begin{framed}\noindent
+  Never tick \textbf{Height Detection} - this is a bug in the program. If you need the height map, select the suitable calibration file instead (see above).
+\end{framed}
 
-    Window name & Window chosen  & \hyperref[sec:marker_location]{Marker Location}, \hyperref[sec:jobmaker]{jobmaker}, \hyperref[sec:material-correction]{Material Correction} & \texttt{2C}\\\hline
+\newpage
+\subsubsection{Global Mark Detection}
+\label{sec:glob-mark-detect}
 
-    PQRS by design & Where they should be according to design & \hyperref[sec:jobmaker]{jobmaker} & (4000,5000) \\\hline
-    PQRS real & Where JEOL will locate them & \hyperref[sec:marker_location]{Marker Location}, \hyperref[sec:material-correction]{Material Correction} & (4334, 6000)\\\hline
-    Condition file & Aperture and Current used & \hyperref[sec:jobmaker]{jobmaker}, \hyperref[sec:material-correction]{Material Correction} & \verb|2nA_60um|\\\hline
-  \end{tabular}
-\end{table}
+\begin{framed}\noindent
+  Layers that  need to  be aligned  with lower  layers will  need to  locate the
+  markers from the previous layer. For calibration procedure see Sec.~\ref{sec:material-correction}.
+\end{framed}
 
+\begin{figure}[h]
+  \centering \inkfig{12cm}{pq_coordinates}
+  \caption{\small  1)   Convenient  markers  chosen  for   aligment;  2)  Marker
+    coordinates    taken    down   using    microscope    next    to   SEM    in
+    Sec.\ref{sec:marker_location};     3)     During    material     correction,
+    Sec~\ref{sec:material-correction},  set \texttt{P(0,0)},  \texttt{Q(1000,0)}
+    and set  offset to the microscope  coordinates of the \textbf{P}  point. The
+    SEM  will then  measure  and find  a  more accurate  offset;  4) Supply  the
+    \textbf{Offset}  and   \textbf{Design  Coordinates}   in  Jobmaker   in  the
+    \textbf{Job Properties} menu.}
+  \label{fig:pq_coordinates}
+\end{figure}
 
-\subsection{Checking temperature fluctuations}
-\label{Temperaturefluctuations}
+\subsubsection{Chip Mark Detection}
+\label{sec:chip-mark-detection}
+
+\begin{framed}\noindent
+  Patterns  where every  individual  pattern has  a chip  mark  for even  better
+  alignment before.
+\end{framed}
+
 \begin{itemize}
-\item \cmd{Terminal \ira {ebanalyze} \ira {trend}};
-\item \cmd{Select start and end date time \ira Press search};
-\item \cmd{Click on file, it will turn black};
-\item Press ``check".
-\item To  see graph  select ``MONTMPS" for  temperature, ``MONVACS"  for vacuum,
-  ``MONACCS" for accelerating voltage.
+\item Tick Chip Mark Detection
+\item Choose Type
+\item Choose Mode
+\item Tick Height Detection
 \end{itemize}
+
+\subsubsection{Other}
+\label{sec:other}
+
+\begin{itemize}
+\item Below  \textbf{Chip List}, click on  \texttt{...}.  A window pops  up \ira
+  Choose your file and press \textbf{Open}.
+\item Press on press \textbf{a, b, c, d, etc} to drop pattern onto grid.
+\item Right click on it and select \textbf{Chip property}.
+  \begin{itemize}
+  \item Choose Center Position
+  \item Choose ``Subfield Sorting" (Direction of exposure)
+  \item Press  ``Shot Rank Table..."   next to Shot Rank  and a window  will pop
+    up. Here you need to set the doses, enter Modulation in \%. Press Close.
+  \item Enter your chip mark coordinates.  tem Choose shape of your chip mark.
+  \item Enter your chip mark size.
+  \item Press OK.
+  \end{itemize}
+\item To  create an array,  right click on your  pattern and select  ``Array". A
+  window pops up.
+  \begin{itemize}
+  \item Choose your array size (Number)
+  \item Choose your chip to chip distance (Pitch)
+  \item You may want to tick Grouping,  especially if you are planning to create
+    another array of the array (Nesting).
+  \item Press Ok
+  \end{itemize}
+\item You may create another array if you wish.
+\item Save File.
+\item Compile (triangle icon) and press OK.
+\end{itemize}
+Return to ``jbx writer"
+\begin{itemize}
+\item \red{Before exposure click {read offset} to transfer alignment information
+    from {jbwriter} to this design file};
+\item Press ``Exposure" button.
+\item Press open and select your Magazine File, the file you have just compiled.
+\item Press ``Start Exposure"-button, press OK.
+\item  You  can  monitor,  the  progress of  exposure:  Yellow  (writing),  Blue
+  (completed)
+\end{itemize}
+
+% \subsection{GDS Conversion}
+% If  file is  in  \texttt{gds}-format, you  first  need to  convert  it to  v30
+% following  the  steps  below.   Note  that  each  layer  has  to  be  imported
+% separately. Know your layers!
+% \begin{itemize}
+% \item Open ``jbxconv" on main console (DELL computer).
+% \item Choose your file: File $\rightarrow$ Open.
+% \item Choose \textbf{Structure} and \textbf{Layer}.
+% \item Choose ``Size parameters".
+% \item Command $\rightarrow$ Start Conversion $\rightarrow$ OK.
+% \end{itemize}
+
+% \begin{table}[htbp]
+%   \centering
+%   \begin{tabular}{|p{3cm}|p{3cm}|c|c|}
+%     \hline
+%     \textbf{Parameter} & \textbf{Meaning} & \textbf{Where to enter} & \textbf{Example}\\\hline\hline
+%     Cassette name & The big metal hunk being used & \hyperref[sec:marker_location]{Marker Location}, \hyperref[sec:jobmaker]{jobmaker}, \hyperref[sec:material-correction]{Material Correction} & \texttt{2 inch}\\\hline
+
+%     Window name & Window chosen  & \hyperref[sec:marker_location]{Marker Location}, \hyperref[sec:jobmaker]{jobmaker}, \hyperref[sec:material-correction]{Material Correction} & \texttt{2C}\\\hline
+
+%     PQRS by design & Where they should be according to design & \hyperref[sec:jobmaker]{jobmaker} & (4000,5000) \\\hline
+%     PQRS real & Where JEOL will locate them & \hyperref[sec:marker_location]{Marker Location}, \hyperref[sec:material-correction]{Material Correction} & (4334, 6000)\\\hline
+%     Condition file & Aperture and Current used & \hyperref[sec:jobmaker]{jobmaker}, \hyperref[sec:material-correction]{Material Correction} & \verb|2nA_60um|\\\hline
+%   \end{tabular}
+% \end{table}
+
+
+% \subsection{Checking temperature fluctuations}
+% \label{Temperaturefluctuations}
+% \begin{itemize}
+% \item \cmd{Terminal \ira {ebanalyze} \ira {trend}};
+% \item \cmd{Select start and end date time \ira Press search};
+% \item \cmd{Click on file, it will turn black};
+% \item Press ``check".
+% \item To see  graph select ``MONTMPS" for temperature,  ``MONVACS" for vacuum,
+%   ``MONACCS" for accelerating voltage.
+% \end{itemize}
 
 \subsection{Condition file}
 \begin{framed}\noindent
@@ -142,7 +251,8 @@ layers!
 \item Tick the ``Restore" and ``DEMAG" option $\rightarrow$ Press \textbf{check}
   to check that the condition file was created recently;
 \item  Change aperture:  Open the  ``Main Console  Access"-door.  Pull  and turn
-  cylinder handle to the appropriate aperture
+  cylinder handle  to the appropriate  aperture.  \red{Aperture must  be changed
+    before clicking execute.}
 \item Press  \textbf{execute} and the settings  from the condition file  will be
   applied;
 \end{itemize}
@@ -170,6 +280,9 @@ layers!
   to put the contrast to maximum, and adjust the Brightness;
 \item Adjust magnification;
 \item Initial calibration should be done with back-scattered electrons (BE);
+\item For 2nA and 200pA current, click \textbf{x56}.
+\item If nothing is visible on the  screen, move to larger aperture and turn the
+  dials to align the aperture.
 \end{itemize}
 
 The outcome of this should be a cross like so:
@@ -182,7 +295,7 @@ The outcome of this should be a cross like so:
 
 \begin{itemize}
 \item In the  \textbf{Alignment Tab} Press \textbf{WOBB} \ira Press  on the lens
-  you are using (it will be lens 4);
+  you are using (it will be lens 4 or 5);
 \item Eliminate wobbling by turning dials on  the rod with the apertures stick -
   start with one to eliminate diagonal (the  closest dial) and then the other to
   eliminate  other  diagonal;  \red{The  image   should  pulsate  but  not  move
@@ -233,36 +346,7 @@ The outcome of this should be a cross like so:
 \item When \textbf{2nd} is off, press \textbf{3rd}.
 \item When \textbf{3rd} is off, press \textbf{DEMAG} (it will turn off);
 \item Use the focus knob to change current again;
-\item Press \textbf{4th} \ira \textbf{SPOT} off.
-\end{itemize}
-
-\subsubsection{Focusing}
-\label{sec:focusing}
-
-\begin{framed}\noindent
-  For large 100nA  current, you must focus yourself, because  the machine does a
-  bad job.
-\end{framed}
-\begin{itemize}
-\item Click \textbf{SEM} on and move to marker \textbf{SEM SP};
-\item Set \textbf{x3000 magnification} and \red{do not use rapid scan};
-\item Pull out the small table and adjust focus using the grey controller:
-  \begin{itemize}
-  \item Use 4th lens;
-  \item Click \textbf{FINE} for finer movements;
-  \item Turn the \textbf{LENS/DF} dial.
-  \end{itemize}
-\item Press the \textbf{Stig} button and remove astigmatism.
-\item \textbf{Even better to do it on \cmd{SEM SP}}
-\item \red{To not perform automatic focusing after this, simply skip this tab}.
-\end{itemize}
-
-\begin{framed}\noindent
-  If not using 100na, automatic focusing will work.
-\end{framed}
-\begin{itemize}
-\item Tick \textbf{Static Focus Correction} in the Focusing-tab.
-\item Execute \ira Save
+\item Press \textbf{4th} (or \textbf{5th}) \ira \textbf{SPOT} off.
 \end{itemize}
 
 \subsubsection{Standard mark detection calibration}
@@ -303,6 +387,7 @@ If detection still fails, time to find markers manually:
 \paragraph{Finding BE manually}
 \begin{itemize}
 \item Turn on \textbf{SEM};
+  \item Set magnification to x50,000 as the standard cross will fir the grid perfectly.
 \item Move to \textbf{BE} and use arrows to move marker to middle of the screen;
 \item Press \textbf{Register} (in the fixed position submenu);
 \item In the \textbf{BE Tab} update  the BE coordinates by clicking \textbf{Make
@@ -313,6 +398,7 @@ If detection still fails, time to find markers manually:
 \paragraph{Finding AE Manually}
 
 \begin{itemize}
+\item Set magnification to x50,000 as the standard cross will fir the grid perfectly.
 \item Check the mark condition, to find the corner to align it to:
   \begin{itemize}
   \item (4, 4): Bottom left;
@@ -332,6 +418,35 @@ If detection still fails, time to find markers manually:
     save both AE and BE!}
 \end{framed}
 
+\subsubsection{Focusing}
+\label{sec:focusing}
+
+\begin{framed}\noindent
+  For large 100nA  current, you must focus yourself, because  the machine does a
+  bad job. Or for very precise jobs such as 200pA.
+\end{framed}
+\begin{itemize}
+\item Click \textbf{SEM} on and move to marker \textbf{SEM SP};
+\item Set \textbf{x3000 magnification} and \red{do not use rapid scan};
+\item Pull out the small table and adjust focus using the grey controller:
+  \begin{itemize}
+  \item Use 4th lens;
+  \item Click \textbf{FINE} for finer movements;
+  \item Turn the \textbf{LENS/DF} dial.
+  \end{itemize}
+\item Press the \textbf{Stig} button and remove astigmatism.
+\item \textbf{Even better to do it on \cmd{SEM SP}}
+\item \red{To not perform automatic focusing after this, simply skip this tab}.
+\end{itemize}
+
+\begin{framed}\noindent
+  If not using 100na, automatic focusing will work.
+\end{framed}
+\begin{itemize}
+\item Tick \textbf{Static Focus Correction} in the Focusing-tab.
+\item Execute \ira Save
+\end{itemize}
+
 \subsubsection{Deflection correction}
 
 \begin{itemize}
@@ -342,6 +457,15 @@ If detection still fails, time to find markers manually:
   judgment X,Y are below 4 nm (6 nm) for lens 5 (4) in the ``Log".
 \end{itemize}
 
+\subsubsection{Material Correction (general)}
+With the height map, JEOL will make a matrix of heights - need to specify no points and the separation.
+
+\begin{figure}[h]
+  \centering
+  \inkfig{3cm}{jeol_height_map}
+  \caption{\small How Jeol creates matrix height map\label{fig:jeol_height_map}}
+\end{figure}
+
 \subsubsection{Material Correction (aligning the sample)}
 \label{sec:material-correction}
 
@@ -349,26 +473,43 @@ If detection still fails, time to find markers manually:
   For layers after the first one,  aligning higher layers will require execution
   of this step.
   \begin{itemize}
-  \item The coordinates of the markers are measured outside the SEM (in absolute
-    coordinates) relative to the \textbf{whole cassette};
-  \item   The  real   coordinates  of   the   markers  are   written  in   Stage
-    \ref{sec:jobmaker}.
+  \item The  real coordinates of the  markers are measured outside  the SEM. The
+    way this is done in described in Sec.~\ref{sec:marker_location}.
+  \item   The   design    coordinates   of   the   markers    are   written   in
+    Sec. \ref{sec:jobmaker}.
+  \item The best way to deal with P and Q coordinates is to set \texttt{P=(0,0)}
+    and set Q to whatever it's offset  is relative to it. This guide will assume
+    that this is the logic taken.
   \end{itemize}
 \end{framed}
 
-The easiest way to deal with P  and Q coordinates is to set \texttt{P=(0,0)} and
-set Q to whatever it's offset is relative to it.
-
 \begin{figure}[h]
-  \centering \inkfig{4cm}{pq_coordinates}
-  \caption{\small Location of P and Q coordinates\label{fig:pq_coordinates}}
+  \centering \inkfig{12cm}{pq_coordinates}
+  \caption{\small  1)   Convenient  markers  chosen  for   aligment;  2)  Marker
+    coordinates    taken    down   using    microscope    next    to   SEM    in
+    Sec.\ref{sec:marker_location};     3)     During    material     correction,
+    Sec~\ref{sec:material-correction},  set \texttt{P(0,0)},  \texttt{Q(1000,0)}
+    and set  offset to the microscope  coordinates of the \textbf{P}  point. The
+    SEM  will then  measure  and find  a  more accurate  offset;  4) Supply  the
+    \textbf{Offset}  and   \textbf{Design  Coordinates}   in  Jobmaker   in  the
+    \textbf{Job Properties} menu.}
 \end{figure}
 
 \begin{itemize}
 \item Tick \textbf{Global Mark Detection};
 \item Select the chip holder and window;
-\item Enter  the P and  Q mark coordinates  that were taken  \textbf{outside the
-    SEM}. If it happens that this was not done, you will have to unload.
+\item Enter  the \red{design} P  (which is always  set to \texttt{(0,0)})  and Q
+  marker coordinates;
+  \item \textbf{For Aluminum markers, use manual mode! Agree to locate the marker, but instead of clicking continue, press cancel. EBL will then NOT look for the markers itself, and asssume that they are under your coordinates.}
+\item \
+  \begin{framed}\noindent
+    \red{\textbf{Most important part:}} Now  enter the measured coordinates (see
+    \autoref{sec:marker_location})  of  the  \textbf{P}   point  in  the  offset
+    box. What  you are telling the  machine, is that point  \textbf{P} will have
+    coordinates \texttt{(0,0)} as long as this  offset is performed. You will be
+    instructing the machine to shift so that \textbf{P} is located at the origin
+    \texttt{(0, 0)}.
+  \end{framed}
 \item In the  \textbf{Global Mark} menu click \textbf{RG  Detect Condition} \ira
   in \textbf{Scan Type} enter width of mark;
 \item Repeat for \textbf{Q Rough Scan, P Fine Scane, Q Fine scan};
@@ -376,12 +517,35 @@ set Q to whatever it's offset is relative to it.
 \end{itemize}
 
 \begin{framed}\noindent
-  \red{Of course  the marker will be  at an offset  to where you expected  it to
-    be. Find this offset in the log file and make a note of it.}
-
-  This offset will be added to Stage \ref{sec:jobmaker} when we prepare the file
-  by clicking \textbf{Read offset}.
+  \red{The machine  will cacluate a more  accurate offset, which can  be seen in
+    the \textbf{Log}}. This is the  offset to be typed in \autoref{sec:jobmaker}
+  (or clicking \textbf{Read Offset}).
 \end{framed}
+
+\begin{framed}\noindent
+  For aluminum, the following settings are best:
+  \begin{itemize}
+  \item BE
+  \item Add signal course derivative;
+  \item 56 Coarse gain;
+  \item Middle Gain 1900;
+  \item BE Offset 1600;
+  \item 1 dummy scan;
+  \item 5 scans.
+  \end{itemize}
+\end{framed}
+
+\begin{framed}\noindent
+  This is also the best place to doing manual focusing.
+  \begin{itemize}
+  \item  After  marks  have  been  detected \ira  click  on  the  \textbf{target
+      position}  coordinate   boxes  (This   will  activate  them)   \ira  click
+    \textbf{Move}
+  \item Now that you  are on the chip makers, zoom in  and perform focusing like
+    in \autoref{sec:focusing};
+  \end{itemize}
+\end{framed}
+
 
 \subsubsection{End of calibration}
 \label{sec:end-calibration}
@@ -389,86 +553,6 @@ set Q to whatever it's offset is relative to it.
 \begin{framed}\noindent
   Update \ira Save and exposure is ready to go.
 \end{framed}
-
-\subsection{JobMaker}\label{sec:jobmaker}
-
-\begin{figure}[h]
-  \centering \inkfig{4cm}{pq_coordinates}
-  \caption{\small Location of P and Q coordinates}
-\end{figure}
-
-\begin{itemize}
-\item Select Cassette name and choose window.
-\item Press Job Property and a window ``Job 1 Property" will pop up.
-\item In that window under the Calibration heading
-  \begin{itemize}
-  \item Select EOS Mode.
-  \item Choose your Condition File.
-  \item Choose your Calib. Menu, for example DIRE01. %Explain options
-  \end{itemize}
-\item Under the Exposure Condition heading
-  \begin{itemize}
-  \item Choose Scan Step
-  \item Enter Beam Current
-  \item Choose OL Aperture
-  \item Choose dose (the resist does not matter)
-  \end{itemize}
-\item Under the Alignment heading
-  \begin{itemize}
-  \item Tick Global Mark Detection
-  \item Choose Mode ``Semi Auto"
-  \item Copy your P  and Q mark coordinates from the Log file  (You have taken a
-    note a ter do ng the Global Mark Detec ion).  item Tick ize
-  \item E ter width  a d length o your marks item  Tick Height Detection, change
-    Offset to the values found in the  Log file (from when Global Mark Det ction
-    was done)
-  \item Tick C ip Mark Detection
-  \item C oose Type
-  \item Choose Mode
-  \item Tick Height Detection
-  \end{itemize}
-\item Press OK.   The window will close.  P  and Q marks appear on  the wafer in
-  the ``EB Job Maker".
-\item Open ``ptnview" on the Desktop to check your pattern.
-\item If satisfied, return to ``EB Job Maker".
-\item Below Chip List, below Chip a, click on ``..."-button.  A window pops up.
-  \begin{itemize}
-  \item Choose your file and press Open.
-  \end{itemize}
-\item Press on ``a"-button and drop it on the wafer.
-\item Right click on it and select ``Chip property".
-  \begin{itemize}
-  \item Choose Center Position
-  \item Choose ``Subfield Sorting" (Direction of exposure)
-  \item Press  ``Shot Rank Table..."   next to Shot Rank  and a window  will pop
-    up. Here you need to set the doses, enter Modulation in \%. Press Close.
-  \item Enter your chip mark coordinates.  tem Choose shape of your chip mark.
-  \item Enter your chip mark size.
-  \item Press OK.
-  \end{itemize}
-\item To  create an array,  right click on your  pattern and select  ``Array". A
-  window pops up.
-  \begin{itemize}
-  \item Choose your array size (Number)
-  \item Choose your chip to chip distance (Pitch)
-  \item You may want to tick Grouping,  especially if you are planning to create
-    another array of the array (Nesting).
-  \item Press Ok
-  \end{itemize}
-\item You may create another array if you wish.
-\item Save File.
-\item Compile (triangle icon) and press OK.
-\end{itemize}
-Return to ``jbx writer"
-\begin{itemize}
-\item \red{Before exposure click {read offset} to transfer alignment information
-    from {jbwriter} to this design file};
-\item Press ``Exposure" button.
-\item Press open and select your Magazine File, the file you have just compiled.
-\item Press ``Start Exposure"-button, press OK.
-\item  You  can  monitor,  the  progress of  exposure:  Yellow  (writing),  Blue
-  (completed)
-\end{itemize}
 
 \subsection{For JEOL engineers and advanced users only}
 

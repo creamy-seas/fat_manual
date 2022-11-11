@@ -50,7 +50,11 @@ Machine in  separate room.  Used  for good deposition. For  flakes on
   indicate that the two chambers have been connected;
 \end{itemize}
 
-  \subsection{Creating a process for deposition}
+\subsection{Creating a process for deposition}
+\begin{framed}\noindent
+  Processed are located in \texttt{Program Files/DaLek/prg}
+\end{framed}
+
   In order to make a custom process
 
   \begin{itemize}
@@ -123,6 +127,25 @@ Machine in  separate room.  Used  for good deposition. For  flakes on
     valve  fully  by 180\ideg.   Otherwise  the  very last  oxidation
     process in the cycle, which runs  at 10\,mBar, will take too long
     to inject the correct amount of oxygen.  }
+
+  \subsection{Dynamic oxidation}
+
+\begin{itemize}
+\item Flush the lines just like for static oxdiation (process, static, 0.3mBar wait, then vent)
+\item Can test dynamic oxidation, by clicking \textbf{Dynamic} button, which will slightly open a valve. On the top of the screen, pick a sccm from 20 to 0.1sccm.
+\item Monitor the LP pink banner. YOu should be getting 40\,$\mu$Bar at 20sccm
+  \item Use this to find the optimal pressure. Then, set the sccm in the recipe.
+  \end{itemize}
+
+  \begin{table}
+    \centering
+    \begin{tabular}{c|c|c}
+      \textbf{Pressure} ($\mu$Bar) & \textbf{Flow} (sccm) & \textbf{Resistance} of 100nm x 100nm(k$\Omega$)\\
+      42 & 20 & 6.7\\
+      21 & 10 & \\
+      10.8 & 5 & \\
+    \end{tabular}
+  \end{table}
 
  \subsection{Admitting argon}
  Sometimes you want to vent to chamber, or flush the argon line.

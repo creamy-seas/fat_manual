@@ -41,4 +41,41 @@ to apply voltages
   \href{http://www.atlantecrf.com/products/active_components/amplifiers/wide_band_amplifiers.htm}{AOX-010120 amplifier}
   just needs 5\,V from any supply.
 \end{enumerate}
+
+\subsubsection{New LNF-LNC4-8C amplifier}
+\label{sec:new-lnf-lnc4}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1.0\linewidth]{images_inkscape/wiring-lnf-lnc4-8c.pdf}
+  \caption{\small Wiring of the amplifier. \label{fig:wiring-lnf-lnc4-8c}}
+\end{figure}
+
+The wiring for the newest \texttt{LNF-LNC4\_8C} amplifier is shown in Figure~\ref{fig:wiring-lnf-lnc4-8c}. The small black box (\texttt{LNF-PS3b}) is used to set drain voltage ($V_{d}$) and the drain current ($I_{d}$) through front panel - the gate voltage ($V_{g}$) automatically adjusts.
+
+\textbf{Setup}:
+\begin{enumerate}
+\item Keep display off for low noise.
+\item Switch on the power box \texttt{LNF-PBA}. Install jumper plug between earth and common for non-floating mode;
+\item Switch on the black box \texttt{LNF-PS3b} - \textbf{do not connect amplifier yet!};
+\item Set $V_{d}=0.7\,\text{V}$;
+\item Connect \texttt{LNF-LNC4-8C};
+\item Set $I_{d}=15\,\text{mA}$;
+\item Can press $V_{d-\text{sense}}$ to show the actual $V_{d}$ on the amplifier. Can correct further;
+  \item Can test at room temperature to get 20-30\,dB amplification.
+\end{enumerate}
+
+\textbf{Power Off:}
+\begin{enumerate}
+\item Switch off voltage box \texttt{LNF-PS3b};
+\item Switch off the power supply \texttt{LNF-PBA};
+\end{enumerate}
+
+\textbf{Power on:}
+\begin{enumerate}
+\item Switch on power supply \texttt{LNF-PBA};
+\item Switch of voltage box \texttt{LNF-PS3b};
+\end{enumerate}
+
 \newpage

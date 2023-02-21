@@ -64,7 +64,7 @@
 %%% Physics Packages
 \RequirePackage{qcircuit} % for quantum circuits
 \RequirePackage{braket} % \Bra and \Ket
-\RequirePackage{kbordermatrix} % label matrix rows and columns
+%% \RequirePackage{kbordermatrix} % label matrix rows and columns
 
 %%% Images with Inkscape (they are used by it)
 \RequirePackage{xifthen}  \RequirePackage{pdfpages} \RequirePackage{transparent}

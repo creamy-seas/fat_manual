@@ -103,7 +103,7 @@ done on the microscope next to the door.
 \end{itemize}
 
 \begin{framed}\noindent
-  Never tick \textbf{Height Detection} - this is a bug in the program. If you need the height map, select the suitable calibration file instead (see above).
+  Never tick \textbf{Height Detection} - this can only be used with chip mark detection, where height is measured every time. If you need the height map, select the suitable calibration file instead (see above).
 \end{framed}
 
 \newpage
@@ -255,6 +255,7 @@ Return to ``jbx writer"
     before clicking execute.}
 \item Press  \textbf{execute} and the settings  from the condition file  will be
   applied;
+  \item To use another condition file, copy it and load it.
 \end{itemize}
 
 \begin{table}[h]
@@ -393,6 +394,7 @@ If detection still fails, time to find markers manually:
 \item In the \textbf{BE Tab} update  the BE coordinates by clicking \textbf{Make
     current Position default};
 \item Press \textbf{Save}.
+\item Repeat for \textbf{under BE}
 \end{itemize}
 
 \paragraph{Finding AE Manually}
@@ -466,8 +468,9 @@ With the height map, JEOL will make a matrix of heights - need to specify no poi
   \caption{\small How Jeol creates matrix height map\label{fig:jeol_height_map}}
 \end{figure}
 
-\subsubsection{Material Correction (aligning the sample)}
-\label{sec:material-correction}
+\subsubsection{Material Correction (aligning the sample)}\label{sec:material-correction}
+
+Begin by selecting correct material type (2 inch) and the window (2D or 2C) \textbf{in every submenu!}
 
 \begin{framed}\noindent
   For layers after the first one,  aligning higher layers will require execution

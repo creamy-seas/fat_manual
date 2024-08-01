@@ -1,0 +1,83 @@
+\section{Dicing saw}
+
+Cover in s1813 (4500rpm, 5min at 110C) and then use arp 1165 remover at 60C to take off after.
+
+\subsection{Loading wafer}
+\label{sec:loading-wafer}
+
+\begin{enumerate}
+	\item Put metal frame on the loader. Text should be visible and on the bottom;
+	\item Put wafer \textbf{face down} onto the black surface;
+	\item Turn on compressor;
+	\item Pull the sticky film all the way to the bottom and press down with
+	      roller;
+	\item Trim the top edge with cutter first \(\rightarrow\) then circle cut multiple
+	      times.
+\end{enumerate}
+
+\subsection{Machine setup}
+\label{sec:machine}
+
+\begin{enumerate}
+	\item Turn on the power near plug \(\rightarrow\) turn on power at back of machine \(\rightarrow\)
+	      twist the power key - it should go green;
+	\item Mount the wafer onto stage, sample facing up;
+	\item \texttt{System Initial };
+	\item If vacuum has not turned on \(\rightarrow\) \texttt{CT Vacuum};
+	\item Open the blue water valve on the wall;
+\end{enumerate}
+
+\subsection{Recipe preparation}
+\label{sec:recipe-preparation}
+
+\begin{enumerate}
+	\item Load recipes by clicking \texttt{F3 Device Data} \(\rightarrow\) example are in
+	      \texttt{Nanotech} folder;
+	\item \textbf{CH1} blade cuts horizontally \(\rightarrow\) Set the length that this
+	      blade should cover e.g. 18mm square;
+	\item \textbf{CH2} blade cuts vertically \(\rightarrow\) Set the length that this blade
+	      should cover e.g. 10mm square;
+	\item For thick wavers use \textbf{work thickness} of $0.365\,\text{mm}$;
+	\item For thin wavers use \textbf{work thickness} of $0.28\,\text{mm}$;
+	\item \textbf{Tape thickness} should be $0.09\,\text{mm}$;
+	\item Set the \texttt{Y-Index} to tell machine how large the steps should be
+	      in each direction e.g. 2.5\,mm;
+	\item Once happy, click \texttt{Exit} to return to main menu.
+\end{enumerate}
+
+\subsection{Aligning and Cutting}
+\label{sec:cutting}
+
+\begin{enumerate}
+	\item \texttt{Manual Operation} \(\rightarrow\) \texttt{Cut Auto} \(\rightarrow\) \texttt{Manual
+		      Align};
+	\item Change magnification to see whole chip \textbf{\red{but remember to
+			      change to LO mag when doing Align below}};
+	\item Move the target (by clicking on screen) to the bottom left corner marker
+	      \(\rightarrow\) Click \texttt{Align};
+	\item Machine moves to the opposite end \(\rightarrow\) move cursor to the matching
+	      marker \(\rightarrow\) Click \texttt{Align};
+	\item Next machine asks from which \textbf{lane} to start cutting \(\rightarrow\) align
+	      to the start lane which should be the bottom of the chip \(\rightarrow\) Press
+	      \texttt{Enter};
+	\item Repeat for the Ch2 in the same way. \red{\textbf{Remember - alignment on
+			      the screen is always horizontal!}}
+	\item Can use \texttt{light} \(\rightarrow\) \texttt{AutoLight} to change brightness of
+	      image;
+	\item \texttt{Cut};
+	\item Click \texttt{Alarm clear} once finished.
+\end{enumerate}
+
+
+\subsection{Unloading}
+\label{sec:unloading}
+
+\begin{enumerate}
+	\item \texttt{Exit} \(\rightarrow\) \texttt{Stop Spindle} \red{and wait} \(\rightarrow\)
+	      \texttt{Stop Vacuum};
+	\item Clear off the sample and cutting area with air;
+	\item Turn of using key \red{and wait for green light to go off} \(\rightarrow\) Turn
+	      off from the back \(\rightarrow\) Turn off near the plug \(\rightarrow\) Turn off water.
+\end{enumerate}
+
+\newpage

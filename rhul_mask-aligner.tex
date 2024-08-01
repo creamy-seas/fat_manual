@@ -1,0 +1,154 @@
+\section{New Mask Aligner}\label{sec:new-mask-aligner}
+
+\textbf{WEC} is wedge area compensation, ensuring that wafer and mask are
+parallel.
+
+In \textbf{manual view}, can select either left, right or split fields to
+display on the main screen. In \textbf{camera view} this is controlled via
+software.
+
+\subsection{Dials:}
+
+\begin{itemize}
+  \item \textbf{10} on the $x, y, \theta$ dials in centred position;
+  \item Big silver dials on the two objective sides move $x$;
+  \item Small dials on the two object sides fine focus for each side;
+  \item Global focus dial at the top of column;
+  \item Left/right light dials for illumination control on the bottom left
+        panel;
+  \item Global microscope manipulator on the side side of the tower;
+  \item \textbf{Gas dials}:
+        \begin{itemize}
+          \item Nitrogen purge - if resist is sensitive to oxygen can blast
+                nitrogen into area. Very rare to use;
+          \item Vacuum dial for when vacuum contact;
+          \item The rightmost dial should be around $.150\,\text{mPa}$ for WEC
+                pressure (wedge contact pressure). This allows the head to sit
+                on a cushion, allowing the substrate to be positioned in
+                parallel.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Levers:}
+
+\begin{itemize}
+  \item Contact lever \red{Never align when in contact};
+  \item Separation lever
+\end{itemize}
+
+\subsection{Contact modes}
+\label{sec:contact-modes}
+
+\begin{itemize}
+  \item \textbf{Soft contact}: wedge area compensation to the mask. \red{This is
+        the one that we will use the most often};
+  \item \textbf{Hard contact}: wedge area compensation where nitrogen is used to
+        push wafer to the mask;
+  \item \textbf{Vacuum contact}: very accurate for small features. No need for
+        big features $> 2\,\mu\text{m}$; In addition to above, rubber ring allows
+        vacuum to suck out air between mask and wafer, giving best contact.
+        Accuracy $< 1\,\mu\text{m}$;
+  \item \textbf{Low vacuum contact}: nitrogen is bled into the chamber to fill
+        up the vacuum.
+\end{itemize}
+
+\subsection{Loading program}
+\label{sec:loading-program}
+
+\begin{enumerate}
+  \item Pick current chuck for the substrate being used. This allows accurated
+        WEC;
+  \item The rubber ring is only needed for vaccum contact;
+  \item On screen \textbf{Mask Vacum Off/On} hold for 4 seconds;
+  \item \textbf{Parameters}:
+        \begin{itemize}
+          \item \textbf{Align and expose}: usual;
+          \item \textbf{Flood}: blasting everything;
+          \item \textbf{Test Exposure}: Do multiple exposures for different
+                times. Special rotator that blocks off light different sectors.
+        \end{itemize}
+  \item \textbf{Exposure}: Its selecting various contact modes described in
+        \autoref{sec:contact-modes}. Once selected there is an option for each
+        one:
+        \begin{itemize}
+          \item Vacuum times - how long to wait before applying full vacuum.
+        \end{itemize}
+  \item Choose reflected or backside light;
+  \item \textbf{Contact Chuck}: select vacuum if doing with vaccum ring;
+  \item \textbf{Exposure time and repetitions};
+  \item \textbf{Align check} checks alignment under exposure conditions without
+        exposing. Good to check if there is a shift before exposing.
+\end{enumerate}
+
+\subsection{Loading}
+\label{sec:loading}
+
+\begin{itemize}
+  \item Connect vacuum tube, to suck up the mask;
+  \item Plug chuck in and tighten the side bolts;
+  \item Turn the handlebars on the sides to change illumination of each
+        aperture;
+  \item Set the coarse focus with the big dial on the tower $\rightarrow$ do small focus
+        with the small dials on each column;
+\end{itemize}
+
+\subsection{Aligning}
+\label{sec:aligning}
+
+\begin{enumerate}
+  \item Click WEC settings on screen $\rightarrow$ 0.5 second wait before lifting the
+        head;
+  \item \texttt{Close the contact lever} - the one on the side of the machine,
+        which lifts the sample up.
+  \item \texttt{Turn the central dial} to {push wafer into the mask} $\rightarrow$
+        \texttt{open the contact lever} once this pressure is set;
+  \item Now go into WEC mode $\rightarrow$ \texttt{move the separation dial} down;
+  \item Move the big side levers to align both sides and the $\theta$ dial
+  \item Can move the small dial on sides of microscope objectives to shift
+        camera to scan views;
+  \item Go back into contact mode, \texttt{move the separation dial up} $\rightarrow$
+        \texttt{close the contact lever}.
+\end{enumerate}
+
+\subsection{Expose}
+\label{sec:expose}
+
+The different lamps have different power. This is fixed, so to change dose need
+to change the power.
+
+\begin{itemize}
+  \item $365\,\text{nm}$ has $24\,\text{mW/cm}^{2}$;
+  \item $405\,\text{nm}$ has $58\,\text{mW/cm}^{2}$;
+  \item $435\,\text{nm}$ has $16.5\,\text{mW/cm}^{2}$.
+\end{itemize}
+
+\texttt{Press expose} and lamp moves out and exposes. In the old aligner it was
+mercury lamp, which was a combination of all 3. But here its more precise for
+certain resists. Use buttons below yellow lamp to select what kind of light to
+shine. $10-20\,\text{second}$ exposure time.
+
+\subsection{Infra-red}
+\label{sec:infra-red}
+
+\begin{enumerate}
+  \item Position ``basket'' on the head instead of the usual adaptor;
+  \item Put in the filters in the objectives from the side;
+  \item Take the illumination cable. It has a left and a right side. Slide them
+        in under the mask on the rails;
+  \item Put the other ends into \textbf{IF-L} and \textbf{IF-R};
+  \item Make sure microscope is down - now we are looking through the chuck on
+        the mask.
+  \item Close lever, move the separation dial down.
+\end{enumerate}
+
+\subsection{Turn off}
+\label{sec:turn}
+
+\begin{enumerate}
+  \item Turn off lights;
+  \item Move the \textbf{separation dial} up $\rightarrow$ open the \textbf{contact
+    lever};
+  \item Reset the $x, y, \theta$ dials back to \textbf{10}.
+  \item Hold turn off for 2 seconds;
+  \item Turn off the pump;
+\end{enumerate}
